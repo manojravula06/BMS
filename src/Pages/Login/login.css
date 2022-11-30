@@ -1,0 +1,24 @@
+.loginCard{
+    background-color: black;
+color:white;
+display: flex;
+align-items: center;
+
+}
+.cardAlign{
+    background-color: #b1adad;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+ .msg:hover{
+    background-color: rgb(178, 54, 54);
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 5px;
+}
+.errmsg{
+    background-color: white;
+    text-align: center;
+    margin: 2px;
+}
