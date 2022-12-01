@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Navbar from "../../Component/navbar/Navbar";
+// import Navbar from "../../Component/navbar/Navbar";
 import Nav from "../../Component/navbar/Nav";
 import Slider from "../../Component/slider/Slider";
 import { getAllMovies } from "../../API/movies/Movies";
+import CardItem from "../../Component/Card/Card";
 import { CSpinner } from "@coreui/react";
-import { HandThumbsUpFill } from "react-bootstrap-icons";
 import Footer from "../../Component/footer/Footer";
 
 const LandingPage = () => {
@@ -23,6 +23,7 @@ const LandingPage = () => {
     return (
       isLoading && (
         <div className="d-flex my-5 justify-content-center align-item-center">
+          LOADING PLEASE WAIT . . . .
           <CSpinner variant="grow" />
         </div>
       )
@@ -36,7 +37,7 @@ const LandingPage = () => {
   return (
     <div>
       {/* <Navbar /> */}
-      <Nav/>
+      <Nav />
 
       {getLoader()}
 
@@ -44,14 +45,22 @@ const LandingPage = () => {
         <>
           <Slider />
 
-          <div className="container my-4">
+          <div className="container lg-text-center my-4">
             <h5> Recomended Movies </h5>
 
             <div className="row">
               {movieList.map((movie) => {
                 return (
-                  <div className="col-lg-3 col-xs-6 my-2">
+                  <div className="col-lg-3 col-xs-6 m-2">
                     <Link>
+                      {" "}
+                      <CardItem
+                      img={movie.posterUrl} 
+                      text="58K" 
+                      title={movie.name} />
+                    </Link>
+
+                    {/* <Link>
                       <div
                         className="d-flex justify-content-center align-items-stretch"
                         style={{ height: "30rem" }}
@@ -80,7 +89,7 @@ const LandingPage = () => {
                           </div>
                         </div>
                       </div>
-                    </Link>
+                    </Link> */}
                   </div>
                 );
               })}
