@@ -125,9 +125,8 @@ const Login = () => {
     if (!validateData(data)) {
       return;
     }
-
+   
     const response = await signUp(data);
-
     if (response.status === 201) {
       setMessage("Signed Up Successfully");
       clearState();
@@ -153,6 +152,7 @@ const Login = () => {
 
     if (result.status === 200) {
       setMessage("Logged in successfullly");
+
 
       const { name, userId, userTypes, userStatus, accessToken } = result.data;
 

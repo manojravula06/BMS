@@ -7,6 +7,7 @@ import { getAllMovies } from "../../API/movies/Movies";
 import CardItem from "../../Component/Card/Card";
 import { CSpinner } from "@coreui/react";
 import Footer from "../../Component/footer/Footer";
+import "./LandingPage.css";
 
 const LandingPage = () => {
   const [movieList, setMovieList] = useState([]);
@@ -55,11 +56,11 @@ const LandingPage = () => {
                     <Link>
                       {" "}
                       <CardItem
-                      img={movie.posterUrl} 
-                      text="58K" 
-                      title={movie.name} />
+                        img={movie.posterUrl}
+                        text="58K"
+                        title={movie.name}
+                      />
                     </Link>
-
                     {/* <Link>
                       <div
                         className="d-flex justify-content-center align-items-stretch"

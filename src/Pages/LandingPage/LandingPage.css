@@ -1,0 +1,5 @@
+.align{
+    display: flex;
+   justify-content:flex-start;
+   margin: 2rem;
+}

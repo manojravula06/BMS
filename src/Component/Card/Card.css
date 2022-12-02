@@ -1,9 +1,9 @@
-.card {
+.moviecard {
   background-color: black;
   width: 18rem;
-  height: 30rem;
+  height: 28rem;
 }
 
 .img {
-  height:25rem;
+  height:22rem;
 }

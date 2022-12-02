@@ -16,7 +16,7 @@ const Nav = () => {
       <div className="bg-dark container-fluid sticky-top">
         <div className="row">
           
-          <div className="col-lg-2 col-sm-center m-2 text-light">
+          <div className="col-lg-2 col-sm-center m-auto text-light">
           <Link to="/" className="text-decoration-none text-light">
             <h6 className="display-6">B M S</h6>
             </Link>
@@ -24,10 +24,9 @@ const Nav = () => {
           
           
           <div className="col-lg-6 col-sm-6 p-2">
-            <input type="text" name="" id="" className="form-control" />
-            {/* <Button variant="danger">search</Button>   */}
+            <input type="text" name="" id="" placeholder="Search for movies" className="form-control" />
           </div>
-          <div className="col-lg-2 col-sm-4 p-2">
+          <div className="col-lg-2 col-sm-4 p-2 mx-auto">
           
             {localStorage.getItem("accessToken") ? (
               <>
