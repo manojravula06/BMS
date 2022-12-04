@@ -76,6 +76,7 @@ const Admin = () => {
       "DJ Tillu",
       "God father",
       "Wakanda forever",
+      "Avatar",
       "Thor Love and Thunder",
       "Sardhar",
       "Vikram Hitlist",
@@ -88,11 +89,11 @@ const Admin = () => {
     setCounterInfo(counterInfo);
   };
   const fetchUserData = () => {
-    const datafromAPI = [
-      'Manoj','raju','sudha', 'vishnu','Ram', 'Arjun','Ravi Teja','Charan','Prabhas','Krishna','Mahesh', 2, 3, 4, 5, 6, 7, 9, 10,
+    const usersDataAPI = [
+      'Manoj','raju','sudha', 'vishnu','Ram', 'Arjun','Ravi Teja','Charan','Prabhas','Krishna','Mahesh','Krishna','Rama Rao','Pavan','Rambabu','Peneloi', "Anjali", 'Pallavi', 'Sampurnesh',
     ];
-    setUsersData(datafromAPI);
-    counterInfo.user = datafromAPI.length;
+    setUsersData(usersDataAPI);
+    counterInfo.user = usersDataAPI.length;
     setCounterInfo(counterInfo);
   };
   //toggle to show theater table
@@ -145,7 +146,7 @@ const Admin = () => {
               className="mb-3 text-white"
               color={"dark"}
               progress={{ color: "success", value: counterInfo.movie }}
-              title="No.of Movies"
+              title="Movies"
               value={counterInfo.movie}
               onClick={showMovies}
             />
@@ -167,6 +168,32 @@ const Admin = () => {
         {showTheaterTable && <h1>Theatre </h1>}
         {showMoviesTable && <h1>Movies </h1>}
         {showUsersTable && <h1>Users </h1>}
+      </div>
+      <div>
+        {showUsersTable && usersData.map((user)=>(
+            <li className="m-2">{user}</li>
+        ))
+        }
+        {showTheaterTable &&
+          theatersData.map((theater)=>(
+            <div className="card">
+              <div className="card-body">
+                <h4 className="card-title">{theater.name}</h4>
+                <div className="card-text">{theater.description}</div>
+                <div className="card-text">{theater.city}</div>
+
+                <div className="card-text">{theater.pincode}</div>
+              </div>
+            </div>
+          ))
+        }
+        {
+          showMoviesTable && moviesData.map((movie)=>(
+            <>
+            <h4 className="m-2 display-3">{movie}</h4>
+            </>
+          ))
+        }
       </div>
     </div>
   );
