@@ -15,10 +15,85 @@ const Admin = () => {
     //update the theaters state
     //update the counterInfo state
     const datafromAPI = [
-      1, 2, 3, 4, 5, 6, 7, 9, 10, 1, 2, 3, 4, 5, 6, 7, 9, 10, 1, 2, 3, 4, 5, 6,
-      7, 9, 10, 1, 2, 3, 4, 5, 6, 7, 9, 10,
+      {
+        name: "PVR",
+        city: "Guntur",
+        description: "Multi screen cinema",
+        pinCode: 522007,
+      },
+      {
+        name: "UV Platinos 4K",
+        city: "Guntur",
+        description: "Gold cinema",
+        pinCode: 522007,
+      },
+      {
+        name: "Cine square",
+        city: "Guntur",
+        description: "70mm Dolby Atmos",
+        pinCode: 522007,
+      },
+      {
+        name: "Cine Prime",
+        city: "Guntur",
+        description: "70mm Dolby Atmos",
+        pinCode: 522007,
+      },
+      {
+        name: "Naaz A/C",
+        city: "Guntur",
+        description: "Dual Screen theatre",
+        pinCode: 522007,
+      },
+      {
+        name: "Sqami Theatre",
+        city: "Guntur",
+        description: "Dolby Atmos",
+        pinCode: 522007,
+      },
+      {
+        name: "Harihar Mahal",
+        city: "Guntur",
+        description: "70mm Dolby Atmos",
+        pinCode: 522007,
+      },
     ];
     setTheatersData(datafromAPI);
+    counterInfo.theater = datafromAPI.length;
+    setCounterInfo(counterInfo);
+  };
+
+  const fetchMoviesData = () => {
+    const datafromAPI = [
+      "Kanthara",
+      "Love Today",
+      "PS-1",
+      "RRR",
+      "Prince",
+      "Ginna",
+      "Yashodha",
+      "HIT Case 2",
+      "DJ Tillu",
+      "God father",
+      "Wakanda forever",
+      "Thor Love and Thunder",
+      "Sardhar",
+      "Vikram Hitlist",
+      "Sitha Ramam",
+      "K.G.F Chapeter-2",
+      'Ramsethu','Brahmmastra','Dhamki'
+    ];
+    setMoviesData(datafromAPI);
+    counterInfo.movie = datafromAPI.length;
+    setCounterInfo(counterInfo);
+  };
+  const fetchUserData = () => {
+    const datafromAPI = [
+      'Manoj','raju','sudha', 'vishnu','Ram', 'Arjun','Ravi Teja','Charan','Prabhas','Krishna','Mahesh', 2, 3, 4, 5, 6, 7, 9, 10,
+    ];
+    setUsersData(datafromAPI);
+    counterInfo.user = datafromAPI.length;
+    setCounterInfo(counterInfo);
   };
   //toggle to show theater table
   const showTheaters = () => {
@@ -42,6 +117,8 @@ const Admin = () => {
   useEffect(() => {
     setTimeout(() => {
       fetchTheatersData();
+      fetchMoviesData();
+      fetchUserData();
     }, 2000);
   });
   return (
@@ -50,41 +127,37 @@ const Admin = () => {
       <div className="text-center">
         <h1>Welcome {localStorage.getItem("name")}!</h1>
         <p> Take a quick look at your stats below</p>
+
         <div className="row p-2">
           <div className="col">
             <CWidgetStatsC
-            className="mb-3 text-white"
-            color={'dark'}
-            icon={<i className="bi bi-card-list text-danger"></i>}
-            progress={{color:'success'}}
-            text='No.of Theaters'
-            title="Theaters"
-            value={counterInfo.theater}
-            onClick={showTheaters}
+              className="mb-3 text-white"
+              color={"dark"}
+              progress={{ color: "success", value: counterInfo.theater }}
+              title="Theaters"
+              text="Widget helper text"
+              value={counterInfo.theater}
+              onClick={showTheaters}
             />
           </div>
           <div className="col">
             <CWidgetStatsC
-            className="mb-3 text-white"
-            color={'dark'}
-            icon={<i className="bi bi-card-list text-danger"></i>}
-            progress={{color:'success'}}
-            text='No.of Movies'
-            title="Movies"
-            value={counterInfo.movie}
-            onClick={showMovies}
+              className="mb-3 text-white"
+              color={"dark"}
+              progress={{ color: "success", value: counterInfo.movie }}
+              title="No.of Movies"
+              value={counterInfo.movie}
+              onClick={showMovies}
             />
           </div>
           <div className="col">
             <CWidgetStatsC
-            className="mb-3 text-white"
-            color={'dark'}
-            icon={<i className="bi bi-card-list text-danger"></i>}
-            progress={{color:'success'}}
-            text='No.of Users'
-            title="Users"
-            value={counterInfo.users}
-            onClick={showUsers}
+              className="mb-3 text-white"
+              color={"dark"}
+              progress={{ color: "success", value: counterInfo.user }}
+              title="Users"
+              value={counterInfo.user}
+              onClick={showUsers}
             />
           </div>
         </div>
