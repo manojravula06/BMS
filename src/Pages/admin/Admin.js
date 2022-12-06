@@ -1,4 +1,13 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import Table from "@mui/material/Table";
+import {
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+} from "@mui/material";
 import { CWidgetStatsC } from "@coreui/react";
 import Nav from "../../Component/navbar/Nav";
 
@@ -82,15 +91,36 @@ const Admin = () => {
       "Vikram Hitlist",
       "Sitha Ramam",
       "K.G.F Chapeter-2",
-      'Ramsethu','Brahmmastra','Dhamki'
+      "Ramsethu",
+      "Brahmmastra",
+      "Dhamki",
     ];
     setMoviesData(datafromAPI);
+    console.log(setMoviesData);
     counterInfo.movie = datafromAPI.length;
     setCounterInfo(counterInfo);
   };
   const fetchUserData = () => {
     const usersDataAPI = [
-      'Manoj','raju','sudha', 'vishnu','Ram', 'Arjun','Ravi Teja','Charan','Prabhas','Krishna','Mahesh','Krishna','Rama Rao','Pavan','Rambabu','Peneloi', "Anjali", 'Pallavi', 'Sampurnesh',
+      "Manoj",
+      "raju",
+      "sudha",
+      "vishnu",
+      "Ram",
+      "Arjun",
+      "Ravi Teja",
+      "Charan",
+      "Prabhas",
+      "Krishna",
+      "Mahesh",
+      "Krishna",
+      "Rama Rao",
+      "Pavan",
+      "Rambabu",
+      "Peneloi",
+      "Anjali",
+      "Pallavi",
+      "Sampurnesh",
     ];
     setUsersData(usersDataAPI);
     counterInfo.user = usersDataAPI.length;
@@ -117,11 +147,11 @@ const Admin = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      fetchTheatersData();
       fetchMoviesData();
       fetchUserData();
+      fetchTheatersData();
     }, 2000);
-  });
+  }, []);
   return (
     <div>
       <Nav />
@@ -164,36 +194,52 @@ const Admin = () => {
         </div>
       </div>
 
-      <div className="m-2">
-        {showTheaterTable && <h1>Theatre </h1>}
+      <div className="m-2 text-center">
+        {showTheaterTable && <h1>Theatres </h1>}
         {showMoviesTable && <h1>Movies </h1>}
         {showUsersTable && <h1>Users </h1>}
       </div>
       <div>
-        {showUsersTable && usersData.map((user)=>(
-            <li className="m-2">{user}</li>
-        ))
-        }
-        {showTheaterTable &&
-          theatersData.map((theater)=>(
-            <div className="card">
-              <div className="card-body">
-                <h4 className="card-title">{theater.name}</h4>
-                <div className="card-text">{theater.description}</div>
-                <div className="card-text">{theater.city}</div>
-
-                <div className="card-text">{theater.pincode}</div>
-              </div>
-            </div>
-          ))
-        }
-        {
-          showMoviesTable && moviesData.map((movie)=>(
+        {showUsersTable &&
+          usersData.map((user) => <li className="m-2">{user}</li>)}
+        {showMoviesTable &&
+          moviesData.map((movie) => (
             <>
-            <h4 className="m-2 display-3">{movie}</h4>
+              <h4 className="m-2 display-3">{movie}</h4>
             </>
-          ))
-        }
+          ))}
+      </div>
+      <div>
+        <div className="container">
+          <div>
+            <TableContainer component={Paper}>
+              <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                <TableHead>
+                  <TableRow>
+                    <TableCell>Sr.no</TableCell>
+                    <TableCell align="left">Name of the Theater</TableCell>
+                    <TableCell align="left">Description</TableCell>
+                    <TableCell align="left">Location</TableCell>
+                    <TableCell align="left">Screens</TableCell>
+                  </TableRow>
+                </TableHead>
+              {showTheaterTable &&
+              theatersData.map((theater)=>(
+                <>
+                 <TableBody>
+                <TableCell align="left">01</TableCell>
+                <TableCell align="left">{theater.name}</TableCell>
+                <TableCell align="left">{theater.description}</TableCell>
+                <TableCell align="left">{theater.city}</TableCell>
+                <TableCell align="left">{theater.pincode}</TableCell>
+              </TableBody>
+                </>
+              ))
+              }
+              </Table>
+            </TableContainer>
+          </div>
+        </div>
       </div>
     </div>
   );
