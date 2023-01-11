@@ -6,7 +6,7 @@ import "./Card.css";
 const CardItem = ({ img, title, text }) => {
   return (
     <div>
-      <Card className="moviecard">
+      <Card className="moviecard m-2">
         <Card.Body style={{ width: "18rem" }} >
           <Card.Img variant="top" src={img} className="img" />
           <HandThumbsUpFill className="text-success" />

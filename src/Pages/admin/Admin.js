@@ -9,7 +9,7 @@ import {
   Paper,
 } from "@mui/material";
 import { CWidgetStatsC } from "@coreui/react";
-import Nav from "../../Component/navbar/Nav";
+import Nav from "../../components/navbar/Nav";
 
 const Admin = () => {
   const [counterInfo, setCounterInfo] = useState({});
@@ -23,6 +23,7 @@ const Admin = () => {
   const fetchTheatersData = () => {
     //update the theaters state
     //update the counterInfo state
+    //fake data
     const datafromAPI = [
       {
         sr_no: '01',

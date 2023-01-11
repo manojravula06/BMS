@@ -1,12 +1,12 @@
-import React,{ useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 // import Navbar from "../../Component/navbar/Navbar";
-import Nav from "../../Component/navbar/Nav";
-import Slider from "../../Component/slider/Slider";
+import Nav from "../../components/navbar/Nav";
+import Slider from "../../components/slider/Slider";
 import { getAllMovies } from "../../API/movies/Movies";
-import CardItem from "../../Component/Card/Card";
+import CardItem from "../../components/Card/Card";
 import { CSpinner } from "@coreui/react";
-import Footer from "../../Component/footer/Footer";
+import Footer from "../../components/footer/Footer";
 import "./LandingPage.css";
 
 const LandingPage = () => {
@@ -24,7 +24,6 @@ const LandingPage = () => {
     return (
       isLoading && (
         <div className="d-flex my-5 justify-content-center align-item-center">
-          LOADING PLEASE WAIT . . . .
           <CSpinner variant="grow" />
         </div>
       )
@@ -47,57 +46,21 @@ const LandingPage = () => {
           <Slider />
 
           <div className="container lg-text-center my-4">
-            <h5> Recomended Movies </h5>
-
-            <div className="row">
-              {movieList.map((movie) => {
-                return (
-                  <div className="col-lg-3 col-xs-6 m-2">
-                    <Link>
-                      {" "}
-                      <CardItem
-                        img={movie.posterUrl}
-                        text="58K"
-                        title={movie.name}
-                      />
-                    </Link>
-                    {/* <Link>
-                      <div
-                        className="d-flex justify-content-center align-items-stretch"
-                        style={{ height: "30rem" }}
-                      >
-                        <div
-                          style={{ width: "20rem" }}
-                          className="card bg-dark"
-                        >
-                          <img
-                            style={{ height: "80%" }}
-                            src={movie.posterUrl}
-                            className="card-img-top"
-                            alt="movie"
-                          />
-
-                          <div className="p-2">
-                            <div className="d-flex justify-content-left align-items-center">
-                              <HandThumbsUpFill className="text-success" />
-                              <span className="text-success px-2">58K</span>
-                            </div>
-
-                            <p className="text-white fw-bolder px-2 fs-5">
-                              {" "}
-                              {movie.name}{" "}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </Link> */}
-                  </div>
-                );
-              })}
-            </div>
+            <h5 className="text-center text-sm-start"> Recomended Movies </h5>
           </div>
+          {movieList.map((movie) => {
+            return (
+              <div className="row justify-content-start">
+                <div class="col-4">
+                  <CardItem img={movie.posterUrl} title={movie.name} text='58K' />
+                </div>
+              </div>
+            );
+          })}
         </>
       )}
+      <div className="row justify-content-start"></div>
+
       <Footer />
     </div>
   );
