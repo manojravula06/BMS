@@ -11,8 +11,8 @@ const AppRoute=()=>{
            <Routes>
            <Route exact path="/login" element={<Login/>}/>
             <Route exact path="/" element={<LandingPage/>}/>
-           <Route path="/*" element={<Unauthorized/>} />
-           <Route exact path="/admin" element={<Admin/>}/>          
+           <Route exact path="/admin" element={<Admin/>}/>
+           <Route path="/*" element={<Unauthorized/>} />          
            </Routes>
         </Router>
     )

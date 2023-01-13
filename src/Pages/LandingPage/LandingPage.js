@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { HandThumbsUpFill } from "react-bootstrap-icons";
 // import Navbar from "../../Component/navbar/Navbar";
 import Nav from "../../components/navbar/Nav";
 import Slider from "../../components/slider/Slider";
@@ -50,17 +51,18 @@ const LandingPage = () => {
           </div>
           {movieList.map((movie) => {
             return (
-              <div className="row justify-content-start">
-                <div class="col-4">
-                  <CardItem img={movie.posterUrl} title={movie.name} text='58K' />
-                </div>
+              <div className="d-flex col-lg-3 col-xs-6 my-2">
+                <CardItem img={movie.posterUrl} title={movie.name} text="58k" />
               </div>
             );
           })}
         </>
       )}
-      <div className="row justify-content-start"></div>
 
+      <div className="d-flex m-3">
+        <div className="card m-2">hello</div>
+        <div className="card m-2">world</div>
+      </div>
       <Footer />
     </div>
   );
