@@ -25,7 +25,6 @@ const Admin = () => {
     //update the counterInfo state
     const theatersData = await getAllTheaters();
     const theaters = theatersData.data;
-    console.log(theaters);
     setTheatersData(theaters);
     counterInfo.theater = theaters.length;
     setCounterInfo(counterInfo);
@@ -33,7 +32,6 @@ const Admin = () => {
 
   const fetchMoviesData = async () => {
     const datafromAPI = await getAllMovies();
-    console.log(datafromAPI);
     const moviesData = datafromAPI.data;
     setMoviesData(moviesData);
     counterInfo.movie = moviesData.length;
@@ -42,9 +40,9 @@ const Admin = () => {
   const fetchUsersData = async () => {
     const datafromAPI = await getAllUsers();
     console.log(datafromAPI);
-    const users = datafromAPI.data;
-    setUsersData(users);
-    counterInfo.user = users.length;
+    usersData=datafromAPI;
+    setUsersData(usersData);
+    counterInfo.user=usersData.length;
     setCounterInfo(counterInfo);
   };
   //toggle to show theater table
@@ -166,7 +164,15 @@ const Admin = () => {
         {showUsersTable && (
           <>
             <h4>USERS TABLE</h4>
-            <MaterialTable />
+            <MaterialTable title={"List of Users"}
+              columns={[
+                { title: " User Name", field: "userId" },
+                { title: "Name", field: "name" },
+                { title: "Email", field: "email" },
+                {title:"Role",field:"userType"}
+              ]}
+              data={usersData}
+              />
           </>
         )}
       </div>

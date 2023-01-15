@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { HandThumbsUpFill } from "react-bootstrap-icons";
-// import Navbar from "../../Component/navbar/Navbar";
 import Nav from "../../components/navbar/Nav";
 import Slider from "../../components/slider/Slider";
 import { getAllMovies } from "../../API/movies/Movies";
@@ -36,7 +34,7 @@ const LandingPage = () => {
   }, []);
 
   return (
-    <div>
+    <div className="">
       {/* <Navbar /> */}
       <Nav />
 
@@ -45,23 +43,30 @@ const LandingPage = () => {
       {!isLoading && (
         <>
           <Slider />
-
-          <div className="container lg-text-center my-4">
-            <h5 className="text-center text-sm-start"> Recomended Movies </h5>
+          <div className="container-fluid my-4">
+            <h5 className="text-center text-sm-lg-start">
+              {" "}
+              Recomended Movies{" "}
+            </h5>
           </div>
-          {movieList.map((movie) => {
-            return (
-              <div className="d-flex col-lg-3 col-xs-6 my-2">
-                <CardItem img={movie.posterUrl} title={movie.name} text="58k" />
-              </div>
-            );
-          })}
         </>
       )}
-
-      <div className="d-flex m-3">
-        <div className="card m-2">hello</div>
-        <div className="card m-2">world</div>
+      <div className="d-flex flex-row col-lg-3 col-xs-6 my-2">
+        {movieList.map((movie) => {
+          return (
+            <>
+              <div className="my-2">
+              <Link to={`/movie/${movie._id}/details`} >
+                <CardItem
+                  img={movie.posterUrl}
+                  title={movie.name}
+                  text={"58K"}
+                />
+                </Link>
+              </div>
+            </>
+          );
+        })}
       </div>
       <Footer />
     </div>

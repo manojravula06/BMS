@@ -10,6 +10,18 @@ export const getAllMovies = async () => {
   }
 };
 
+export const getMovie=async(id)=>{
+  const URL=`/mba/api/v1/movies/${id}`;
+  try {
+    const response=await axiosInstance.get(URL);
+    return response;
+  } catch (error) {
+    throw error;
+  }
+}
+
+
+
 export const removeMovie = async (movie) => {
   const URL = `/mba/api/v1/movies/${movie._id}`;
   try {
