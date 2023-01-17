@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Nav from "../../components/navbar/Nav";
+import Nav from '../../components/navbar/Nav';
 import Slider from "../../components/slider/Slider";
 import { getAllMovies } from "../../API/movies/Movies";
 import CardItem from "../../components/Card/Card";
@@ -35,8 +35,8 @@ const LandingPage = () => {
 
   return (
     <div className="">
-      {/* <Navbar /> */}
-      <Nav />
+      <Nav/>
+      {/* <Nav /> */}
 
       {getLoader()}
 
@@ -44,31 +44,25 @@ const LandingPage = () => {
         <>
           <Slider />
           <div className="container-fluid my-4">
-            <h5 className="text-center text-sm-lg-start">
-              {" "}
-              Recomended Movies{" "}
-            </h5>
+            <h5 className="text-center"> Recomended Movies </h5>
           </div>
         </>
       )}
-      <div className="d-flex flex-row col-lg-3 col-xs-6 my-2">
+      <div className="d-flex col-3 m-2">
         {movieList.map((movie) => {
           return (
-            <>
-              <div className="my-2">
-              <Link to={`/movie/${movie._id}/details`} >
-                <CardItem
-                  img={movie.posterUrl}
-                  title={movie.name}
-                  text={"58K"}
-                />
-                </Link>
-              </div>
+            <><Link to={`/movie/${movie._id}/details`} className="text-decoration-none">
+              <CardItem img={movie.posterUrl} title={movie.name} text={"50K"} />
+              </Link>
             </>
           );
         })}
       </div>
-      <Footer />
+      
+      <div>
+        <Footer/>
+      </div>
+ 
     </div>
   );
 };

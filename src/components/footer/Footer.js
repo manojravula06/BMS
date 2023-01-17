@@ -1,14 +1,11 @@
 import React from "react";
-
-const Footer=()=>{
-    return(
-
-        <div className="bg-dark text-light p-2">
-            <h4 className="text-center my-auto text-danger fw-bolder">MBA</h4>
-        </div>
-    
-    )
-
-}
+import BMS from '../../assets/BMS.avif'; 
+const Footer = () => {
+  return (
+    <div className="bg-dark p-2 sticky-bottom">
+      <h4 className="text-center my-auto text-danger fw-bolder">Book my Show </h4>
+    </div>
+  );
+};
 
 export default Footer;

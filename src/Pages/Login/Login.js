@@ -2,11 +2,11 @@ import React,{ useState, useEffect } from "react";
 import { Dropdown, DropdownButton } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { signIn, signUp } from "../../API/API";
+import Nav from '../../components/navbar/Nav';
 import "./login.css";
 
 const Login = () => {
   const [showSignUp, setShowSignup] = useState(false);
-
   const [userId, setUserId] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -169,7 +169,8 @@ const Login = () => {
   };
 
   return (
-    <div id="loginPage">
+
+    <div className="container-fluid" id="loginPage">
       <div id="loginPage" className="cardAlign vh-100 vw-100">
         <div className="card loginCard">
           <h3 className="m-2"> {showSignUp ? "SIGN UP" : "LOGIN"} </h3>
@@ -229,10 +230,10 @@ const Login = () => {
                       variant="light"
                     >
                       <Dropdown.Item eventKey="CUSTOMER">
-                        {" "}
                         CUSTOMER{" "}
                       </Dropdown.Item>
                       <Dropdown.Item eventKey="CLIENT"> CLIENT </Dropdown.Item>
+                      <Dropdown.Item eventKey="ADMIN"> ADMIN </Dropdown.Item>
                     </DropdownButton>
                   </div>
                 </div>

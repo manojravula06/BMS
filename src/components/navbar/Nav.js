@@ -1,7 +1,9 @@
 import React from "react";
+import logo from '../../../src/assets/logo.png'
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import { signOut, signIn } from "../../API/API";
+import "./Nav.css"
 const Nav = () => {
   const onLogout = () => {
     signOut();
@@ -17,32 +19,29 @@ const Nav = () => {
         <div className="row">
           <div className="col-lg-2 col-sm-center m-auto text-light">
             <Link to="/" className="text-decoration-none text-light">
-              <h6 className="display-6">B M S</h6>
+              <img src={logo} className="logo"/>
             </Link>
           </div>
 
-          <div className="col-lg-6 col-sm-6 p-2">
+          <div className="col-lg-6 col-sm-6 m-3 p-2">
             <input
               type="text"
               name=""
               id=""
               placeholder="Search for movies"
-              className="form-control"
+              className="form-control p-2"
             />
           </div>
-          <div className="col-lg-2 col-sm-4 p-2 mx-auto">
+          <div className="col-lg-2 col-sm-4 p-2 m-auto">
             {localStorage.getItem("accessToken") ? (
               <>
-                <div className="bg-light text-center rounded p-2 m-2">
-                  {localStorage.getItem("name")}
-                </div>
                 <Button variant="danger" onClick={onLogout}>
                   Log out
                 </Button>
               </>
             ) : (
               <Button variant="danger" onClick={onSignIn}>
-                Log in
+                Log in/Register
               </Button>
             )}
           </div>

@@ -1,9 +1,10 @@
 .moviecard {
   background-color: black;
   width: 18rem;
-  height: 28rem;
+  height: 25rem;
+  text-decoration: none;
 }
 
 .img {
-  height:22rem;
+  height:20rem;
 }

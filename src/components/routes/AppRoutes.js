@@ -5,6 +5,7 @@ import LandingPage from "../../Pages/LandingPage/LandingPage";
 import Unauthorized from "../../Pages/Unauthorized/Unauthorized";
 import Admin from "../../Pages/admin/Admin";
 import Movie from "../../Pages/movie/Movie";
+
 const AppRoute=()=>{
     return(
         <Router>
