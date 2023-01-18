@@ -10,7 +10,7 @@ const goBack=()=>{
 }
   return (
     <div className="unauth">
-      <img src={unauth} alt="Un authorized_image_missig" />
+      <img src={unauth} alt="Un authorized_image_missig" className="img"/>
       <h2>Unauthorized access !</h2>
       <button className="btn btn-danger"
       onClick={goBack}

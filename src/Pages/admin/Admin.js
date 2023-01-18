@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Nav from "../../components/navbar/Nav";
 import { CWidgetStatsC } from "@coreui/react";
+import {DeleteIcon,EditIcon} from '@mui/icons-material/Delete';
 import { useEffect } from "react";
 import HouseIcon from "@mui/icons-material/House";
 import TheatersIcon from "@mui/icons-material/Theaters";
@@ -32,6 +33,7 @@ const Admin = () => {
 
   const fetchMoviesData = async () => {
     const datafromAPI = await getAllMovies();
+    console.log(datafromAPI);
     const moviesData = datafromAPI.data;
     setMoviesData(moviesData);
     counterInfo.movie = moviesData.length;
@@ -40,9 +42,9 @@ const Admin = () => {
   const fetchUsersData = async () => {
     const datafromAPI = await getAllUsers();
     console.log(datafromAPI);
-    usersData=datafromAPI;
+    usersData = datafromAPI;
     setUsersData(usersData);
-    counterInfo.user=usersData.length;
+    counterInfo.user = usersData.length;
     setCounterInfo(counterInfo);
   };
   //toggle to show theater table
@@ -138,10 +140,15 @@ const Admin = () => {
                 { title: "Theater Name", field: "name" },
                 { title: "Name of the City", field: "city" },
                 { title: "Descriptions", field: "description" },
-                { title: "Pin Code", field: "pinCode" },
+                { title: "Pin Code", field: "pinCode" },  
               ]}
               data={theatersData}
-            />
+              actions={[{ icon: DeleteIcon,
+              tooltip:'Delete Theater'},
+              {
+                icon:EditIcon,
+                tooltip:'Edit'
+              }]} />
           </>
         )}
 
@@ -154,9 +161,15 @@ const Admin = () => {
                 { title: "Movie Name", field: "name" },
                 { title: "Director", field: "director" },
                 { title: "Release Date", field: "releaseDate" },
-                {title:"Release Status",field:"releaseStatus"}
+                { title: "Release Status", field: "releaseStatus" },
               ]}
               data={moviesData}
+              actions={[{ icon: DeleteIcon,
+                tooltip:'Delete Theater'},
+                {
+                  icon:EditIcon,
+                  tooltip:'Edit'
+                }]}
             />
           </>
         )}
@@ -164,15 +177,16 @@ const Admin = () => {
         {showUsersTable && (
           <>
             <h4>USERS TABLE</h4>
-            <MaterialTable title={"List of Users"}
+            <MaterialTable
+              title={"List of Users"}
               columns={[
                 { title: " User Name", field: "userId" },
                 { title: "Name", field: "name" },
                 { title: "Email", field: "email" },
-                {title:"Role",field:"userType"}
+                { title: "Role", field: "userType" },
               ]}
               data={usersData}
-              />
+            />
           </>
         )}
       </div>

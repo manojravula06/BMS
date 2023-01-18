@@ -17,7 +17,7 @@ const Nav = () => {
     <>
       <div className="bg-dark container-fluid sticky-top">
         <div className="row">
-          <div className="col-lg-2 col-sm-center m-auto text-light">
+          <div className="col-lg-2 col-sm-col-12 m-auto text-light">
             <Link to="/" className="text-decoration-none text-light">
               <img src={logo} className="logo"/>
             </Link>
@@ -32,7 +32,7 @@ const Nav = () => {
               className="form-control p-2"
             />
           </div>
-          <div className="col-lg-2 col-sm-4 p-2 m-auto">
+          <div className="col-lg-2 col-sm-4 p-2 m-auto d-flex flex-row-reverse">
             {localStorage.getItem("accessToken") ? (
               <>
                 <Button variant="danger" onClick={onLogout}>

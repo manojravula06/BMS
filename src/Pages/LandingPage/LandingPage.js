@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Nav from '../../components/navbar/Nav';
+import Nav from "../../components/navbar/Nav";
 import Slider from "../../components/slider/Slider";
 import { getAllMovies } from "../../API/movies/Movies";
 import CardItem from "../../components/Card/Card";
@@ -23,7 +23,7 @@ const LandingPage = () => {
     return (
       isLoading && (
         <div className="d-flex my-5 justify-content-center align-item-center">
-          <CSpinner variant="grow" />
+          <CSpinner variant="grow text-danger" />
         </div>
       )
     );
@@ -35,7 +35,7 @@ const LandingPage = () => {
 
   return (
     <div className="">
-      <Nav/>
+      <Nav />
       {/* <Nav /> */}
 
       {getLoader()}
@@ -48,21 +48,31 @@ const LandingPage = () => {
           </div>
         </>
       )}
-      <div className="d-flex col-3 m-2">
+      <div className="row">
         {movieList.map((movie) => {
           return (
-            <><Link to={`/movie/${movie._id}/details`} className="text-decoration-none">
-              <CardItem img={movie.posterUrl} title={movie.name} text={"50K"} />
-              </Link>
+            <>
+              <div className="col-lg-3 col-xs-6 my-2">
+                <Link
+                  to={`/movie/${movie._id}/details`}
+                  className="text-decoration-none"
+                >
+                  <CardItem
+                    img={movie.posterUrl}
+                    title={movie.name}
+                    text={"50K"}
+                    className="text-light mx-4"
+                  />
+                </Link>
+              </div>
             </>
           );
         })}
       </div>
-      
+
       <div>
-        <Footer/>
+        <Footer />
       </div>
- 
     </div>
   );
 };

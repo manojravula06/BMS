@@ -1,9 +1,12 @@
 import React from "react";
-import BMS from '../../assets/BMS.avif'; 
+import logo from '../../assets/logo.png'
+
 const Footer = () => {
   return (
     <div className="bg-dark p-2 sticky-bottom">
-      <h4 className="text-center my-auto text-danger fw-bolder">Book my Show </h4>
+    <span className="d-flex align-items-center">
+    <img src={logo} className="logo"/>
+    </span>
     </div>
   );
 };

@@ -25,12 +25,12 @@ const Login = () => {
       return;
     }
 
-    if (userType === "CUSTOMER") {
-      navigate(-1);
-    } else if (userType === "CLIENT") {
+     if (userType === "CLIENT") {
       navigate("/client");
-    } else {
+    } else if(userType==="ADMIN") {
       navigate("/admin");
+    }else{
+      navigate(-1);
     }
   };
 
@@ -229,9 +229,7 @@ const Login = () => {
                       onSelect={handleSelect}
                       variant="light"
                     >
-                      <Dropdown.Item eventKey="CUSTOMER">
-                        CUSTOMER{" "}
-                      </Dropdown.Item>
+                      <Dropdown.Item eventKey="CUSTOMER">CUSTOMER</Dropdown.Item>
                       <Dropdown.Item eventKey="CLIENT"> CLIENT </Dropdown.Item>
                       <Dropdown.Item eventKey="ADMIN"> ADMIN </Dropdown.Item>
                     </DropdownButton>

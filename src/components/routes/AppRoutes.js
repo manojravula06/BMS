@@ -4,6 +4,7 @@ import Login from "../../Pages/Login/Login";
 import LandingPage from "../../Pages/LandingPage/LandingPage";
 import Unauthorized from "../../Pages/Unauthorized/Unauthorized";
 import Admin from "../../Pages/admin/Admin";
+import {Client} from "../../Pages/client/Client";
 import Movie from "../../Pages/movie/Movie";
 
 const AppRoute=()=>{
@@ -13,6 +14,7 @@ const AppRoute=()=>{
            <Route exact path="/login" element={<Login/>}/>
             <Route exact path="/" element={<LandingPage/>}/>
            <Route exact path="/admin" element={<Admin/>}/>
+           <Route exact path="/client" element={<Client/>}/>
            <Route path="/*" element={<Unauthorized/>} />          
            <Route path="/movie/:movieId/details" element={<Movie/>} />
            </Routes>

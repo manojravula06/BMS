@@ -20,7 +20,11 @@ const Movie = () => {
   return (
     <div>
       <Nav />
-      {!movie && <CSpinner className="container" />}
+      {!movie && (
+        <div className="d-flex my-5 justify-content-center align-item-center">
+          <CSpinner variant="grow text-danger" />
+        </div>
+      )}
       {movie && (
         <>
           <div className="d-flex justify-content-center m-2 bg-dark">
@@ -56,24 +60,37 @@ const Movie = () => {
                 </div>
                 <hr />
                 <div className="d-flex card m-2 text-start">
-                  <h5 className="p-2 text-center">Star Cast</h5>
-                  <div className="d-flex m-2">
-                    <li className="list-group-item p-2 fw-bold">Main lead :</li>{" "}
+                  <h5 className="p-2 text-center">CAST AND CREW</h5>
+                  <div className="d-flex m-2 p-2 ">
+                    <li className="list-group-item text-start fw-bold">
+                      Main lead :
+                    </li>{" "}
                     {movie.casts.map((name) => (
-                      <li className="list-group-item p-2">{name}</li>
+                      <>
+                       <span className="px-2">{name},</span>
+                      </>
                     ))}
                   </div>
-                  <h6 className="p-2 fw-bold">Director : {movie.director} </h6>
-                  <h6 className="p-2 fw-bold"> Release on: {movie.releaseDate} </h6>
+                  <div className="d-flex m-2 p-2 ">
+                    <li className="list-group-item text-start fw-bold">Director :</li>
+                    <span className="px-2">{movie.director}</span>
+                  </div>
                 </div>
-                    <div className="d-flex justify-content-center">
-                      <Link to={isReleased?`/buytickets/${movie.name}/${selectedMovie}`:"#"} key={selectedMovie}
-                      className={isReleased?"btn btn-danger":"btn btn-secondary"}>
-                        {
-                          isReleased?"Book tickets":"COMMING SOON"
-                        }
-                        </Link>
-                    </div>
+                <div className="d-flex justify-content-center">
+                  <Link
+                    to={
+                      isReleased
+                        ? `/buytickets/${movie.name}/${selectedMovie}`
+                        : "#"
+                    }
+                    key={selectedMovie}
+                    className={
+                      isReleased ? "btn btn-danger" : "btn btn-secondary"
+                    }
+                  >
+                    {isReleased ? "Book tickets" : "COMMING SOON"}
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

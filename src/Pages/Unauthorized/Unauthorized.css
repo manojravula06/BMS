@@ -1,5 +1,9 @@
 .unauth{
 display: block;
 text-align: center;
-margin:5rem;
+padding:20px;
+}
+
+.img{
+    height: 300px;
 }
