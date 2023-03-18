@@ -1,8 +1,8 @@
-import React,{ useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Dropdown, DropdownButton } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { signIn, signUp } from "../../API/API";
-import Nav from '../../components/navbar/Nav';
+import Nav from "../../components/navbar/Nav";
 import "./login.css";
 
 const Login = () => {
@@ -20,18 +20,20 @@ const Login = () => {
   const redirectURL = () => {
     const userType = localStorage.getItem("userTypes");
 
-    if (!userType) {
+    if(!userType){
       setErrorMessage("something went wrong!");
       return;
-    }
+  }
 
-     if (userType === "CLIENT") {
-      navigate("/client");
-    } else if(userType==="ADMIN") {
-      navigate("/admin");
-    }else{
+  if(userType==="CUSTOMER"){
       navigate(-1);
-    }
+  }
+  else if(userType==="CLIENT"){
+      navigate("/client");
+  }
+  else{
+      navigate("/admin");
+  }
   };
 
   useEffect(() => {
@@ -125,8 +127,9 @@ const Login = () => {
     if (!validateData(data)) {
       return;
     }
-   
+
     const response = await signUp(data);
+    console.log(response)
     if (response.status === 201) {
       setMessage("Signed Up Successfully");
       clearState();
@@ -151,8 +154,8 @@ const Login = () => {
     const result = await signIn(data);
 
     if (result.status === 200) {
-      setMessage("Logged in successfullly");
-
+      setMessage("Login Success");
+      console.log(result.data.message)
 
       const { name, userId, userTypes, userStatus, accessToken } = result.data;
 
@@ -164,13 +167,13 @@ const Login = () => {
 
       redirectURL();
     }
-
+    console.log(result.data.message);
     setErrorMessage(result.data.message);
   };
 
   return (
-
     <div className="container-fluid" id="loginPage">
+      <Nav />
       <div id="loginPage" className="cardAlign vh-100 vw-100">
         <div className="card loginCard">
           <h3 className="m-2"> {showSignUp ? "SIGN UP" : "LOGIN"} </h3>
@@ -229,7 +232,9 @@ const Login = () => {
                       onSelect={handleSelect}
                       variant="light"
                     >
-                      <Dropdown.Item eventKey="CUSTOMER">CUSTOMER</Dropdown.Item>
+                      <Dropdown.Item eventKey="CUSTOMER">
+                        CUSTOMER
+                      </Dropdown.Item>
                       <Dropdown.Item eventKey="CLIENT"> CLIENT </Dropdown.Item>
                       <Dropdown.Item eventKey="ADMIN"> ADMIN </Dropdown.Item>
                     </DropdownButton>
@@ -266,8 +271,8 @@ const Login = () => {
                 : `Don't have an account ? Sign up`}
             </div>
           </form>
-          <div className="errmsg text-success">{message}</div>
-          <div className="errmsg text-danger">{errorMessage}</div>
+          <div className="errmsg text-success m-2">{message}</div>
+          <div className="errmsg text-danger m-2">{errorMessage}</div>
         </div>
       </div>
     </div>

@@ -13,8 +13,7 @@ const LandingPage = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const initialise = async () => {
-    const movies = await getAllMovies();
-    console.log(movies);
+    const movies = await getAllMovies()
     setMovieList(movies.data);
     setIsLoading(false);
   };
@@ -36,33 +35,39 @@ const LandingPage = () => {
   return (
     <div className="">
       <Nav />
-      {/* <Nav /> */}
+     
 
       {getLoader()}
 
       {!isLoading && (
         <>
           <Slider />
-          <div className="container-fluid my-4">
+          <div className="container my-4">
             <h5 className="text-center"> Recomended Movies </h5>
           </div>
         </>
       )}
+
       <div className="row">
         {movieList.map((movie) => {
           return (
             <>
-              <div className="col-lg-3 col-xs-6 my-2">
+              <div className="col-lg-3 col-xs-6">
                 <Link
                   to={`/movie/${movie._id}/details`}
                   className="text-decoration-none"
                 >
-                  <CardItem
-                    img={movie.posterUrl}
-                    title={movie.name}
-                    text={"50K"}
-                    className="text-light mx-4"
-                  />
+                  <div
+                    className="d-flex justify-content-center align-items-stretch m-2 p-2"
+                    style={{ height: "30rem" }}
+                  >
+                    <CardItem
+                      img={movie.posterUrl}
+                      title={movie.name}
+                      text={"50K"}
+                      className="text-light p-2"
+                    />
+                  </div>
                 </Link>
               </div>
             </>
@@ -71,7 +76,7 @@ const LandingPage = () => {
       </div>
 
       <div>
-        <Footer />
+        <Footer className="p-2"/>
       </div>
     </div>
   );

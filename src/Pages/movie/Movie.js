@@ -7,19 +7,19 @@ import Nav from "../../components/navbar/Nav";
 const Movie = () => {
   const [movie, setMovie] = useState(null);
   const { movieId: selectedMovie } = useParams();
-  const [isReleased, setIsReleased] = useState(null);
+  const [isReleased, setIsReleased] = useState(false);
 
   const initialize = async () => {
     const response = await getMovie(selectedMovie);
-    console.log(response.data);
     setMovie(response.data);
+    setIsReleased(true)
   };
   useEffect(() => {
     initialize();
   }, []);
   return (
     <div>
-      <Nav />
+      <Nav/>
       {!movie && (
         <div className="d-flex my-5 justify-content-center align-item-center">
           <CSpinner variant="grow text-danger" />
@@ -59,15 +59,15 @@ const Movie = () => {
                   </span>
                 </div>
                 <hr />
-                <div className="d-flex card m-2 text-start">
+                <div className="d-flex justify-content-between card m-2 text-start">
                   <h5 className="p-2 text-center">CAST AND CREW</h5>
-                  <div className="d-flex m-2 p-2 ">
-                    <li className="list-group-item text-start fw-bold">
+                  <div className="m-2 p-2 ">
+                  <li className="list-group-item text-start fw-bold">
                       Main lead :
-                    </li>{" "}
+                    </li>
                     {movie.casts.map((name) => (
                       <>
-                       <span className="px-2">{name},</span>
+                       <span className="px-2">{name}</span>
                       </>
                     ))}
                   </div>
@@ -88,7 +88,7 @@ const Movie = () => {
                       isReleased ? "btn btn-danger" : "btn btn-secondary"
                     }
                   >
-                    {isReleased ? "Book tickets" : "COMMING SOON"}
+                    {isReleased ? "BOOK TICKETS" : "COMMING SOON"}
                   </Link>
                 </div>
               </div>

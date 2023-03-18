@@ -1,10 +1,9 @@
 import { axiosInstance } from "../utils/AxiosInstance";
 
 export const signIn = async (user) => {
-  const URL='/mba/api/v1/auth/signin';
+  const URL='/mba/api/v1/auth/signIn';
   try {
     const response = await axiosInstance.post(URL, user);
-    console.log(response)
     if (response.data && response.data.accessToken) {
       const {
         name,
@@ -21,9 +20,10 @@ export const signIn = async (user) => {
       localStorage.setItem("userStatus", userStatus);
       localStorage.setItem("accessToken", accessToken);
     }
-    console.log(response.data)
+    console.log(response)
     return response;
   } catch (error) {
+    console.log(error)
     return error.response;
   }
 };

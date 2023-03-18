@@ -6,6 +6,8 @@ import Unauthorized from "../../Pages/Unauthorized/Unauthorized";
 import Admin from "../../Pages/admin/Admin";
 import {Client} from "../../Pages/client/Client";
 import Movie from "../../Pages/movie/Movie";
+import { MovieTheaters } from "../../Pages/movietheater/MovieTheater";
+import BookingsPage from "../../Pages/bookings/Bookings";
 
 const AppRoute=()=>{
     return(
@@ -15,8 +17,10 @@ const AppRoute=()=>{
             <Route exact path="/" element={<LandingPage/>}/>
            <Route exact path="/admin" element={<Admin/>}/>
            <Route exact path="/client" element={<Client/>}/>
-           <Route path="/*" element={<Unauthorized/>} />          
-           <Route path="/movie/:movieId/details" element={<Movie/>} />
+           <Route exact path="/*" element={<Unauthorized/>} />          
+           <Route exact path="/movie/:movieId/details" element={<Movie/>} />
+           <Route exact path="/buytickets/:movieName/:movieId" element={<MovieTheaters/>}/>
+           <Route exact path="/movie/:movieId/:theaterId" element={<BookingsPage/>}/>
            </Routes>
         </Router>
     )

@@ -33,7 +33,7 @@ const Admin = () => {
 
   const fetchMoviesData = async () => {
     const datafromAPI = await getAllMovies();
-    console.log(datafromAPI);
+
     const moviesData = datafromAPI.data;
     setMoviesData(moviesData);
     counterInfo.movie = moviesData.length;
@@ -41,7 +41,7 @@ const Admin = () => {
   };
   const fetchUsersData = async () => {
     const datafromAPI = await getAllUsers();
-    console.log(datafromAPI);
+  
     usersData = datafromAPI;
     setUsersData(usersData);
     counterInfo.user = usersData.length;
